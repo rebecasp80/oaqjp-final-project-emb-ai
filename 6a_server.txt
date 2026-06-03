@@ -13,14 +13,10 @@ def index():
 @app.route("/emotionDetector", methods=["GET"])
 def emotion_detector_route():
     """
-    Endpoint que recibe el texto y devuelve el resultado formateado
-    o un mensaje de error si el texto es inválido.
+    Endpoint que recibe el texto y devuelve el resultado formateado.
     """
     text_to_analyze = request.args.get("textToAnalyze")
     result = emotion_detector(text_to_analyze)
-
-    if result["dominant_emotion"] is None:
-        return "¡Texto inválido! ¡Por favor, intenta de nuevo!"
 
     response_text = (
         f"Para la declaración dada, la respuesta del sistema es "
@@ -33,4 +29,4 @@ def emotion_detector_route():
     return response_text
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5002)
+    app.run(host="0.0.0.0", port=5000)
